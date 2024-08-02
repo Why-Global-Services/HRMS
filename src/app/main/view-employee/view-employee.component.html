@@ -1,0 +1,159 @@
+<div class="full-box">
+  <div class="head-box">
+    <div class="left">
+        <svg
+        routerLink="/dashboard/manage-employee"
+        style="height: 30px; width: 30px; cursor: pointer"
+        fill="var(--5)"
+        version="1.1"
+        baseProfile="tiny"
+        id="Layer_1"
+        xmlns:x="&amp;ns_extend;"
+        xmlns:i="&amp;ns_ai;"
+        xmlns:graph="&amp;ns_graphs;"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+        viewBox="0 0 42 42"
+        xml:space="preserve"
+      >
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g
+          id="SVGRepo_tracerCarrier"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></g>
+        <g id="SVGRepo_iconCarrier">
+          <polygon
+            fill-rule="evenodd"
+            points="27.066,1 7,21.068 26.568,40.637 31.502,35.704 16.865,21.068 32,5.933 "
+          ></polygon>
+        </g>
+      </svg>
+      <h4>view Employee</h4>
+    </div>
+   
+    <div class="rit">
+      <svg
+      routerLink="/dashboard/manage-employee/add"
+      [queryParams]="{id:id}"
+      style="height: 30px; width: 30px; cursor: pointer"
+      fill="var(--5)"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="#000000"
+      >
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g
+          id="SVGRepo_tracerCarrier"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></g>
+        <g id="SVGRepo_iconCarrier">
+          <title></title>
+          <g id="Complete">
+            <g id="edit">
+              <g>
+                <path
+                  d="M20,16v4a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V6A2,2,0,0,1,4,4H8"
+                  fill="none"
+                  stroke="var(--5)"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                ></path>
+                <polygon
+                  fill="none"
+                  points="12.5 15.8 22 6.2 17.8 2 8.3 11.5 8 16 12.5 15.8"
+                  stroke="#000000"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                ></polygon>
+              </g>
+            </g>
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <div class="view-box">
+    <div class="flow-root">
+      <dl class="-my-3 divide-y divide-gray-100 text-sm">
+        <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+          <dt class="font-medium text-gray-900">Name</dt>
+          <dd class="text-gray-700 sm:col-span-2">{{data.empName}}</dd>
+        </div>
+
+        <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+          <dt class="font-medium text-gray-900">Employee ID</dt>
+          <dd class="text-gray-700 sm:col-span-2">{{data.empId}}</dd>
+        </div>
+
+        <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+          <dt class="font-medium text-gray-900">DOB</dt>
+          <dd class="text-gray-700 sm:col-span-2">{{data.dataOfBirth}}</dd>
+        </div>
+        <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+          <dt class="font-medium text-gray-900">Mobile</dt>
+          <dd class="text-gray-700 sm:col-span-2">{{data.phone}}</dd>
+        </div>
+
+        <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+          <dt class="font-medium text-gray-900">Email</dt>
+          <dd class="text-gray-700 sm:col-span-2">{{data.email}}</dd>
+        </div>
+        <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+          <dt class="font-medium text-gray-900">Official Email</dt>
+          <dd class="text-gray-700 sm:col-span-2">{{data.profEmail}}</dd>
+        </div>
+
+        <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+          <dt class="font-medium text-gray-900">Department</dt>
+          <dd class="text-gray-700 sm:col-span-2">{{data.department}}</dd>
+        </div>
+        <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+          <dt class="font-medium text-gray-900">Head</dt>
+          <dd class="text-gray-700 sm:col-span-2">{{data.head}}</dd>
+        </div>
+        <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+          <dt class="font-medium text-gray-900">Designation</dt>
+          <dd class="text-gray-700 sm:col-span-2">{{data.designation}}</dd>
+        </div>
+        <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+          <dt class="font-medium text-gray-900">Department</dt>
+          <dd class="text-gray-700 sm:col-span-2">{{data.department}}</dd>
+        </div>
+        <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+          <dt class="font-medium text-gray-900">Date of Join</dt>
+          <dd class="text-gray-700 sm:col-span-2">{{data.dateOfJoining}}</dd>
+        </div>
+        <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+          <dt class="font-medium text-gray-900">Aadhar No</dt>
+          <dd class="text-gray-700 sm:col-span-2">{{data.aadharNo}}</dd>
+        </div>
+        <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+          <dt class="font-medium text-gray-900">Pan No</dt>
+          <dd class="text-gray-700 sm:col-span-2">{{data.panNo}}</dd>
+        </div>
+        <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+          <dt class="font-medium text-gray-900">{{data.alternateRelation}}</dt>
+          <dd class="text-gray-700 sm:col-span-2">{{data.alternateName}}</dd>
+        </div>
+        <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+          <dt class="font-medium text-gray-900">{{data.alternateName}} Mobile No</dt>
+          <dd class="text-gray-700 sm:col-span-2">{{data.
+            alternatePhone}}</dd>
+        </div>
+        <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+          <dt class="font-medium text-gray-900">Current Address</dt>
+          <dd class="text-gray-700 sm:col-span-2">{{data.currentAddress}}</dd>
+        </div>
+        <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+          <dt class="font-medium text-gray-900">Residentail Address</dt>
+          <dd class="text-gray-700 sm:col-span-2">{{data.address}}</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</div>

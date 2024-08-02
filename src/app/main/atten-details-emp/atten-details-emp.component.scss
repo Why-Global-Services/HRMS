@@ -1,0 +1,92 @@
+// .head-box{
+//     width: 100%;
+//     margin: 25px 0;
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+//     height: 60px;
+//     padding-right: 10px;
+    h4{
+        color: var(--5);
+        font-weight: 600;
+        width: 250px;
+    }
+    .left{
+       
+        width: 350px;
+        display: flex;
+        align-items: center;
+    }
+    .rit{
+       
+    }
+// }
+.h-32 p:nth-child(1){
+    font-size: 19px;
+}
+.ok div p{
+    text-align: center;
+}
+.button{
+    color: white;
+    background: var(--5);
+    width: 140px;
+    height: 40px;
+    border-radius: 10px;
+    transition: 250ms ease-in-out;
+    &:hover{
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    }
+    &:active{
+        transform: translateY(5px);
+        border: 2px solid var(--5);
+    }
+    &:disabled{
+        background: gray;
+        color: white;
+        cursor: not-allowed;
+    }
+}
+.month{
+    border-radius: 10px;
+    // display: flex;
+    // align-items: center;
+    // justify-content: space-evenly;
+    padding: 0 12px;
+    color: var(--5);
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.modal-box{
+    background-color: white;
+    height: auto;
+    width: 500px;
+}
+.perm{
+    color: var(--5);
+    border: var(--5) solid;
+    width: 140px;
+    background: white;
+    &:hover{
+        transform: scale(1.05) ;
+    }
+    &:active{
+        transform: translateY(5px);
+    }
+    &:disabled{
+        border: 1px solid black;
+    }
+}
+.edit svg:hover{
+    cursor: pointer;
+    stroke: var(--5);
+    transition: 250ms ease-in-out;
+
+}
+.dlt svg:hover{
+    cursor: pointer;
+    stroke: red;
+    transition: 250ms ease-in-out;
+}
+:is(.edit ,.dlt) svg:active{
+    transform: translateY(5px);
+}

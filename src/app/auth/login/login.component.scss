@@ -1,0 +1,135 @@
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color:#f5f5f5;
+  background:  linear-gradient(to right bottom, #fb87028e,#fdb96c38),url('../../../assets/wgs.avif') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.wrapper{
+  width: 420px;
+  background-color: transparent;
+  border: 2px solid rgba(255, 255, 255, .2);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0  10px rgba(0, 0, 0, .2);
+  color: var(--5);
+  background-color: white;
+  border-radius: 10px;
+  padding: 30px 40px;
+  height: 380px;
+  .form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  }
+  
+  
+ }
+
+.wrapper h1{
+  font-size: 36px;
+  text-align: center;
+}
+
+.wrapper .input-box{
+  position: relative;
+  width: 100%;
+  height: 50px;
+  /* background: salmon; */
+  margin: 30px,0;
+}
+
+.input-box input{
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  
+  border: 1px solid #DCBFFF ;
+  border-radius: 15px;
+  font-size: 16px;
+  // color: var;
+  padding: 20px 45px 20px 20px;
+}
+
+.input-box input::placeholder{
+  color: var(--4);
+
+}
+
+.input-box i{
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+}
+
+.wrapper .remember-forgot{
+  display: flex;
+  justify-content: space-between;
+  font-size: 14.5px;
+  /* margin: -15px 0 15px; */
+  }
+  
+  .remember-forgot label input{
+    // accent-color: var(--5);
+    margin-right: 3px;
+  }
+
+  .remember-forgot a {
+    color:var(--5);
+    text-decoration: none;
+  }
+
+  .remember-forgot a:hover {
+    text-decoration: underline ;
+     }
+  
+  .wrapper .bttn{
+    width: 100%;
+    height: 45px;
+    background:var(--4);
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: white;
+    font-weight: 600;
+    transition: 250ms ease-in-out;
+    &:hover{
+        background-color: var(--5);
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+    &:active{
+      color: white;
+      background-color: var(--5);
+      transform: translateY(5px);
+    }
+    &:disabled{
+      background-color: gray;
+    }
+  }
+.err-msg{
+  border: 1px solid red;
+}
+input{
+  color: black !important;
+}

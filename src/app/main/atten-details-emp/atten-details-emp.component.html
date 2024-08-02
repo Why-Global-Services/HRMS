@@ -1,0 +1,356 @@
+<div class="full-box">
+  <div
+    class="w-full my-6 flex items-center justify-between h-16 pr-2 lg:flex-row sm:flex-col md:items-start"
+  >
+    <div class="left">
+      <svg
+        routerLink="/dashboard/attendance"
+        style="height: 30px; width: 30px; cursor: pointer"
+        fill="var(--5)"
+        version="1.1"
+        baseProfile="tiny"
+        id="Layer_1"
+        xmlns:x="&amp;ns_extend;"
+        xmlns:i="&amp;ns_ai;"
+        xmlns:graph="&amp;ns_graphs;"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+        viewBox="0 0 42 42"
+        xml:space="preserve"
+      >
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g
+          id="SVGRepo_tracerCarrier"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></g>
+        <g id="SVGRepo_iconCarrier">
+          <polygon
+            fill-rule="evenodd"
+            points="27.066,1 7,21.068 26.568,40.637 31.502,35.704 16.865,21.068 32,5.933 "
+          ></polygon>
+        </g>
+      </svg>
+      <h4>Attendance Details</h4>
+      <input
+        class="month"
+        type="month"
+        [value]="currentMonth"
+        (change)="changeMonth(month.value)"
+        #month
+      />
+    </div>
+
+    <div class="rit">
+      <button #addPerm onclick="my_modal_2.showModal()"  style="display: none;">none</button>
+      <button [disabled]="this.checkmonth !== this.currentMonth" (click)="openPerm()" class="perm button">
+        Add Permission
+      </button>
+    </div>
+  </div>
+  <div class="body-box">
+    <div class="grid grid-cols-1">
+      <div
+        class="h-32 flex flex-col justify-evenly pl-4 bg-gray-200 rounded-lg mb-4"
+      >
+        <p class="text-[19px] font-normal">{{ data.empName }}</p>
+        <a
+          routerLink="/dashboard/manage-employee/view"
+          target="_blank"
+          [queryParams]="{ id: data._id }"
+          class="text-[var(--5)] font-medium hover:underline hover:underline-offset-4 cursor-pointer"
+          >{{ data.empId }}</a
+        >
+        <p>{{ data.department }}</p>
+      </div>
+    </div>
+    <div
+      class="grid ok grid-cols-1 gap-2 sm:grid-cols-1 lg:grid-cols-3 lg:gap-8 mb-4"
+    >
+      <div
+        class="h-32 rounded-lg bg-gray-200 grid grid-cols-2 items-center justify-center"
+      >
+        <p>Total Days</p>
+
+        <p class="text-[32px] text-[var(--5)] font-semibold">{{ totalDays }}</p>
+      </div>
+      <div
+        class="h-32 rounded-lg bg-gray-200 grid grid-cols-2 items-center justify-center"
+      >
+        <p>Present</p>
+        <p class="text-[32px] text-green-500 font-semibold">
+          {{ presentDate }}
+        </p>
+      </div>
+      <div
+        class="h-32 rounded-lg bg-gray-200 grid grid-cols-2 items-center justify-center"
+      >
+        <p>Late</p>
+        <p class="text-[32px] text-yellow-400 font-semibold">{{ data.Late }}</p>
+      </div>
+    </div>
+    <div
+      class="grid ok grid-cols-1 gap-4 sm:grid-cols-1 lg:grid-cols-4 lg:gap-8 mb-4"
+    >
+      <div
+        class="h-32 rounded-lg bg-gray-200 grid grid-cols-2 items-center justify-center"
+      >
+        <p>Sick Leave</p>
+        <p class="text-[32px] text-blue-500 font-semibold">
+          {{ data.sickleave }}
+        </p>
+      </div>
+      <div
+        class="h-32 rounded-lg bg-gray-200 grid grid-cols-2 items-center justify-center"
+      >
+        <p>Casual leave</p>
+        <p class="text-[32px] text-blue-500 font-semibold">
+          {{ data.casualLeave }}
+        </p>
+      </div>
+      <div
+        class="h-32 rounded-lg bg-gray-200 grid grid-cols-2 items-center justify-center"
+      >
+        <p>WeekOff</p>
+        <p class="text-[32px] text-orange-500 font-semibold">
+          {{ data.Weekoffleave }}
+        </p>
+      </div>
+      <div
+        class="h-32 rounded-lg bg-gray-200 grid grid-cols-2 items-center justify-center"
+      >
+        <p>Loss of Pay</p>
+        <p class="text-[32px] text-red-500 font-semibold">{{ data.LOP }}</p>
+      </div>
+      <div
+        class="h-32 rounded-lg bg-gray-200 grid grid-cols-2 items-center justify-center"
+      >
+        <p>Available Comp Off</p>
+        <p class="text-[32px] text-green-500 font-semibold">{{ availComp }}</p>
+      </div>
+      <div
+        class="h-32 rounded-lg bg-gray-200 grid grid-cols-2 items-center justify-center"
+      >
+        <p>Holiday</p>
+        <p class="text-[32px] text-green-500 font-semibold">
+          {{ data.holiday }}
+        </p>
+      </div>
+      <div
+        class="h-32 rounded-lg bg-gray-200 grid grid-cols-2 items-center justify-center"
+      >
+        <p>Work From Home</p>
+        <p class="text-[32px] text-green-500 font-semibold">{{ data.wfh }}</p>
+      </div>
+      <div
+        class="h-32 rounded-lg bg-gray-200 grid grid-cols-2 items-center justify-center"
+      >
+        <p>Comp off</p>
+        <p class="text-[32px] text-green-500 font-semibold">
+          {{ data.compOff }}
+        </p>
+      </div>
+    </div>
+    <div
+      class="grid ok grid-cols-1 gap-2 sm:grid-cols-1 lg:grid-cols-2 lg:gap-8 mb-4"
+    >
+      @if (showAddComp) {
+      <div
+        class="h-[250px] rounded-lg bg-gray-200 flex flex-col justify-evenly items-center justify-center"
+      >
+        <p>Add Comp Off</p>
+        <div>
+          <label for="">Week off :</label>
+          <select name="" id="" [formControl]="week">
+            @for (item of weekOffArr; track $index) {
+            <option [value]="item._id + 'T' + item.date + 'T' + item.leavetype">
+              {{ item.leavetype }}&nbsp;({{ item.date | date : "dd-MM-YYYY" }})
+            </option>
+            }
+          </select>
+        </div>
+
+        <button (click)="createComp()" class="button">Add Comp</button>
+        <!-- <p class="text-[32px] text-red-500 font-semibold ">{{data.LOP}}</p> -->
+      </div>
+      } @if (showDedComp) {
+      <div
+        class="h-[250px] rounded-lg bg-gray-200 flex flex-col justify-evenly items-center justify-center"
+      >
+        <p>Deduct Comp Off</p>
+        <div class="w-[100%] p-[20px] grid grid-cols-3">
+          <label for="">Select Comp Off:</label>
+          <select name="" id="" (change)="dateChange($event)">
+            <option value="" selected disabled>Select</option>
+            @for (item of currentComp ; track currentComp._id;let idx = $index)
+            {
+            <option [value]="idx">
+              {{ item.leavetype }}&nbsp;({{
+                item.weekOffDate | date : "dd-MM-YYYY"
+              }})
+            </option>
+            }
+          </select>
+          <p>{{ compDateStatus.leavetype }}</p>
+        </div>
+        <div class="w-[100%] p-[20px] grid grid-cols-3">
+          <label for="">Date :</label>
+          <input
+            #date
+            (change)="works()"
+            [value]="today"
+            [min]="today"
+            [max]="oldDateLastMon | date : 'yyyy-MM-dd'"
+            type="date"
+            name=""
+            id=""
+          />
+          <button class="button" (click)="getStatus(date)">Get Status</button>
+        </div>
+
+        <button (click)="dedComp(date)" class="button">Deduct Comp</button>
+        <!-- <p class="text-[32px] text-red-500 font-semibold ">{{data.LOP}}</p> -->
+      </div>
+      } @if (permissionArr.length > 0) {
+      <div
+        class="h-[180px] rounded-lg flex flex-col justify-evenly items-center justify-center"
+      >
+      <h4>Permissions</h4>
+        @for (item of permissionArr; track $index) {
+        <div
+     
+          class="bg-gray-200 w-full h-[80px] grid grid-cols-[80%,20%] rounded-lg mb-4 items-center px-[15px]"
+        >
+        <div>
+          <p    style="text-align: left !important;">
+            Date :{{ item.date | date : "dd-MM-YYYY" }} {{ item.fromTime }}-{{
+              item.toTime
+            }}</p>
+            <p style="text-align: left !important;">
+            Duration :{{ item.duration }}
+          </p>
+        </div>
+         
+          <p class="flex  px-[10px] w-[100%] justify-evenly">
+            <span  (click)="assignPermEdit(item)" class="edit">
+              <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+              </svg>
+              
+            </span>
+            <span (click)="assignPerm(item)" onclick="my_modal_3.showModal()" class="dlt"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"
+                />
+              </svg>
+            </span>
+          
+          </p>
+        </div>
+
+        }
+      </div>
+      }
+    </div>
+  </div>
+</div>
+<!-- permission popup -->
+<dialog id="my_modal_2" class="modal">
+  <div class="modal-box">
+    <div
+      [formGroup]="timeForm"
+      class="h-[350px] rounded-lg bg-gray-200 flex flex-col justify-evenly items-center justify-center"
+    >
+    @if (editPerm) {
+      <p class="text-[19px] font-bold mb-4">Edit Permission</p>
+    }@else {
+      <p class="text-[19px] font-bold mb-4">Add Permission</p>
+    }
+    
+      <div class="w-[100%] px-[10px] grid grid-cols-2 mb-2">
+        <label for="">Select Date:</label>
+        <input formControlName="date"   #permDate type="date" />
+      </div>
+      <div class="w-[100%] px-[10px] grid grid-cols-2 mb-2">
+        <button class="button" (click)="getStatusPerm(permDate)">
+          Get Status
+        </button>
+        <p class="self-center">{{ permStatus.leavetype }}</p>
+      </div>
+      <div class="w-[100%] px-[10px] grid grid-cols-2 mb-2">
+        <label for="">From Time :</label>
+        <input formControlName="fromTime" type="time" name="" id="" />
+      </div>
+      <div class="w-[100%] px-[10px] grid grid-cols-2 mb-2">
+        <label for="">To Time:</label>
+        <input
+          formControlName="toTime"
+          (change)="getTime()"
+          type="time"
+          name=""
+          id=""
+        />
+      </div>
+
+      <div class="w-[100%] p-[10px] grid grid-cols-2 mb-2">
+        <p class="!text-left">Duration:</p>
+        <p>{{ timeDuration }}</p>
+      </div>
+      @if (editPerm) {
+        <button
+        (click)="editPermission()"
+        [disabled]="timeForm.invalid"
+        class="button"
+      >
+        Update
+      </button>
+      }@else{
+        <button
+        (click)="submitPermission()"
+        [disabled]="timeForm.invalid"
+        class="button"
+      >
+        Add
+      </button>
+      }
+     
+      <!-- <p class="text-[32px] text-red-500 font-semibold ">{{data.LOP}}</p> -->
+    </div>
+  </div>
+  <form method="dialog" class="modal-backdrop">
+    <button #closePerm>close</button>
+  </form>
+</dialog>
+
+<!-- You can open the modal using ID.showModal() method -->
+
+<dialog id="my_modal_3" class="modal">
+  <div class="modal-box h-[400px]">
+    <form method="dialog">
+      <button #perm  class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+    </form>
+    <h3 class="font-bold  py-4 text-lg">Are Sure you want to delete permission</h3>
+    <p    style="text-align: left !important;">
+      Date :{{ dltPerm.date | date : "dd-MM-YYYY" }} {{ dltPerm.fromTime }}-{{
+        dltPerm.toTime
+      }}</p>
+      <p style="text-align: left !important;">
+      Duration :{{ dltPerm.duration }}
+    </p>
+   <div class="flex justify-evenly mt-4">
+    <button (click)="closePrem()" class=" bg-blue-600 text-white px-6 py-2 rounded-md ">NO</button>
+    <button  (click)="dltperm()" class="bg-red-600 text-white px-6 py-2 rounded-md ">Yes</button>
+   </div>
+  </div>
+</dialog>

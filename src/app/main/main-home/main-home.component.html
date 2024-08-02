@@ -1,0 +1,130 @@
+<div class="full-box">
+    <div class="head-box m-5">
+        <h2 class="text-2xl  font-semibold">Welcome <span class="text-[var(--5)]">HR</span></h2>
+    </div>
+    <div class="main-body">
+        <div class="grid ok grid-cols-1 gap-2 sm:grid-cols-1 lg:grid-cols-3 lg:gap-8 mb-4">
+            <div class="h-32 bs pl-5 rounded-lg bg-white flex flex-col items-center  justify-evenly">
+            <p class="text-[22px]  font-semibold " >Total Employee</p>
+              <p  class="text-[var(--5)] text-[30px]" >{{data.employer}}</p>
+            </div>
+            <div class="h-32  bs pl-5 rounded-lg bg-white flex flex-col items-center justify-evenly">
+              <p class="text-[22px]   font-semibold ">Present</p>
+              <p class="text-green-500 text-[30px]">{{data.present}}</p>
+            </div>
+            <div class="h-32  bs pl-5 rounded-lg bg-white flex flex-col items-center  justify-evenly">
+              <p class="text-[22px]  font-semibold ">Absent</p>
+              <p class="text-red-400  text-[30px]" >{{absentCount}}</p>
+            </div>
+            
+          </div>
+        <div class="grid ok grid-cols-1 gap-2 sm:grid-cols-1 lg:grid-cols-3 lg:gap-8 mb-4">
+            <div class="h-32  bs pl-5 rounded-lg bg-white flex flex-col items-center  justify-evenly">
+            <p class="text-[22px]   font-semibold " >Casual Leave</p>
+              <p class="text-blue-400  text-[30px]">{{clCount}}</p>
+            </div>
+            <div class="h-32  bs pl-5 rounded-lg bg-white flex flex-col items-center justify-evenly">
+              <p class="text-[22px]  font-semibold ">Sick Leave</p>
+              <p class="text-blue-400  text-[30px]">{{slCount}}</p>
+            </div>
+            <div class="h-32  bs pl-5 rounded-lg bg-white flex flex-col items-center justify-evenly">
+              <p class="text-[22px]  font-semibold ">Week off</p>
+              <p class="text-yellow-400  text-[30px]">{{wO}}</p>
+            </div>
+            
+          </div>
+          <div class="grid grid-cols-1 gap-2 sm:grid-cols-1 mt-[20px] xl:grid-cols-2">
+            <div class="table-box bs justify-self-center">
+              <div class="dropdown-box">
+                  <select name="" id="" (change)="depChange($event)">
+                    <option value="">All</option>
+                    @for (item of roles; track $index) {
+                      <option [value]="item">{{item}}</option>
+                    }
+                  </select>
+                  <select name="" id="" (change)="attenChange($event)">
+                    <option value="">All</option>
+                    @for (item of attenArr; track $index) {
+                      <option [value]="item">{{item}}</option>
+                    }
+                  </select>
+                  <input forma type="date" [value]="today" (change)="dateChange(date)" #date [max]="today"  placeholder="dd-mm-yyyy">
+                 <p class="h-[40px] self-center"> Total : &nbsp; {{allEmp.length}}</p>
+                
+                </div>
+              <div class="rounded-lg border border-gray-200">
+                <div class="overflow-x-auto rounded-t-lg">
+                  <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+                    <thead class="ltr:text-left rtl:text-right">
+                      <tr>
+                       
+                        <th
+                          class="whitespace-nowrap text-left px-4 py-2 font-medium text-gray-900"
+                        >
+                          Name
+                        </th>
+                        <th
+                          class="whitespace-nowrap text-left px-4 py-2 font-medium text-gray-900"
+                        >
+                          Emp Id
+                        </th>
+                        <th
+                          class="whitespace-nowrap text-left px-4 py-2 font-medium text-gray-900"
+                        >
+                          Department
+                        </th>
+                       
+                        <th
+                          class="whitespace-nowrap text-left px-4 py-2 font-medium text-gray-900"
+                        >
+                          Attendance
+                        </th>
+                       
+                      </tr>
+                    </thead>
+          
+                    <tbody class="divide-y divide-gray-200">
+                      @for (v of allEmp; track $index) {
+                      <tr>
+                        
+                        <td [routerLink]="['details']" [queryParams]="{id:v._id}" class="whitespace-nowrap cursor-pointer hover:underline-offset-4 hover:underline hover:text-[var(--5)] px-4 py-2 font-medium text-gray-900">
+                          <a [routerLink]="['details']" [queryParams]="{id:v._id}" > {{v.empName}}</a>
+                         
+                        </td>
+                        <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                          {{v.empId}}
+                        </td>
+                        <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                          {{v.department}}
+                        </td>
+                        <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                          <p>{{v.att}}</p>
+                         
+                        </td>
+                       
+                      </tr>
+                    }
+                     
+                   
+                 
+                    </tbody>
+                  </table>
+                </div>
+          
+                
+              </div>
+             
+            </div>
+            <div class="chart-box  justify-self-center">
+              <!-- <pie-chart [datas]="chartData"></pie-chart> -->
+              <highcharts-chart 
+                  class="bs"
+                  *ngIf="chartOptions"
+                  [Highcharts]="Highcharts"
+                  [options]="chartOptions"
+                ></highcharts-chart>
+            </div>
+          </div>
+       
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<body>
+    <div class="wrapper">
+        <div class="form" [formGroup]="form" >
+            <h1 class="font-semibold">Login to WGS</h1>
+            <div class="input-box">
+            <input [class.err-msg]="submitted && form.get('email')?.invalid" name="Email" formControlName="email" type="text" placeholder="Email" >
+         
+            </div>
+             <div class="input-box">
+            <input [class.err-msg]="submitted && form.get('password')?.invalid" name="password" formControlName="password" type="password" placeholder="Password" >
+          
+            </div>      
+            <p style="color:red;text-align: center;opacity: 0;" >Invalid Password!</p>
+            <button [disabled]="form.invalid" (click)="login()" class="bttn">Login</button>
+        </div>
+      
+    </div>
+
+</body>

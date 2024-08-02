@@ -1,0 +1,31 @@
+.head-box{
+    width: 100%;
+    margin: 25px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    padding-right: 10px;
+    h4{
+        color: var(--5);
+        font-weight: 600;
+        
+    }
+    .left{
+        width: 179px;
+        display: flex;
+        align-items: center;
+    }
+}
+.view-box{
+   min-height: 550px; 
+   height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    justify-content: space-between;
+    padding: 20px 20px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}

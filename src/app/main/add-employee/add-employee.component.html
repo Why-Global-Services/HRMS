@@ -1,0 +1,281 @@
+<div class="full-box">
+  <div class="head-box">
+    <svg
+      routerLink="/dashboard/manage-employee"
+      style="height: 20px; width: 20px; cursor: pointer"
+      fill="var(--5)"
+      version="1.1"
+      baseProfile="tiny"
+      id="Layer_1"
+      xmlns:x="&amp;ns_extend;"
+      xmlns:i="&amp;ns_ai;"
+      xmlns:graph="&amp;ns_graphs;"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+      viewBox="0 0 42 42"
+      xml:space="preserve"
+    >
+      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+      <g
+        id="SVGRepo_tracerCarrier"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      ></g>
+      <g id="SVGRepo_iconCarrier">
+        <polygon
+          fill-rule="evenodd"
+          points="27.066,1 7,21.068 26.568,40.637 31.502,35.704 16.865,21.068 32,5.933 "
+        ></polygon>
+      </g>
+    </svg>
+    @if(id){
+    <h4>Edit Employee</h4>
+    }@else{
+    <h4>Add Employee</h4>
+    }
+  </div>
+  <div class="form-box" [formGroup]="form">
+    <div class="three-inp">
+      <input
+        type="text"
+        name="name"
+        placeholder="Name"
+        formControlName="empName"
+      />
+      <input
+        type="text"
+        name="empId"
+        placeholder="Employee Id"
+        formControlName="empId"
+      />
+      <div class="sb">
+        <label class="float" for="dob">Date of Birth</label>
+        <input
+          placeholder="DOB"
+          id="dob"
+          name="dataOfBirth"
+          type="date"
+          formControlName="dataOfBirth"
+        />
+      </div>
+      <!-- <div class="sb">
+        <input
+          type="text"
+          name="email"
+          placeholder="Offical Email"
+          formControlName="profEmail"
+        />
+        <label
+          *ngIf="
+            !form.controls['profEmail'].valid &&
+            form.controls['profEmail']?.touched
+          "
+          class="err-float"
+          for=""
+          >Invalid Email!</label
+        >
+      </div> -->
+    </div>
+    <div class="three-inp">
+      <div class="sb">
+        <input
+          type="text"
+          onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57"
+          name="Mobile"
+          placeholder="Mobile"
+          formControlName="phone"
+        />
+
+        <label
+          *ngIf="
+            !form.controls['phone'].valid && form.controls['phone']?.touched
+          "
+          class="err-float"
+          for=""
+          >Invalid Number!</label
+        >
+      </div>
+      <div class="sb">
+        <input
+          type="text"
+          name="email"
+          placeholder="Email"
+          formControlName="email"
+        />
+        <label
+          *ngIf="
+            !form.controls['email'].valid && form.controls['email']?.touched
+          "
+          class="err-float"
+          for=""
+          >Invalid Email!</label
+        >
+      </div>
+
+      <div class="sb">
+        <input
+          type="text"
+          name="email"
+          placeholder="Offical Email"
+          formControlName="profEmail"
+        />
+        <label
+          *ngIf="
+            !form.controls['profEmail'].valid &&
+            form.controls['profEmail']?.touched
+          "
+          class="err-float"
+          for=""
+          >Invalid Email!</label
+        >
+        <label
+          for=""
+          *ngIf="
+            form.get('profEmail')?.hasError('unique') &&
+            (form.get('profEmail')?.dirty ||
+              form.get('profEmail')?.touched)
+          "
+        >Email should be unique</label>
+      </div>
+    </div>
+    <div class="two-inp">
+      <div class="sb">
+        <input
+          type="text"
+          onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57"
+          name="Mobile"
+          placeholder="Alternate Mobile"
+          formControlName="alternatePhone"
+        />
+
+        <label
+          *ngIf="
+            !form.controls['alternatePhone'].valid &&
+            form.controls['alternatePhone']?.touched
+          "
+          class="err-float"
+          for=""
+          >Invalid Number!</label
+        >
+      </div>
+      <div class="combo-inp">
+        <input
+          placeholder="Alternate Name"
+          name="alternateName"
+          type="text"
+          formControlName="alternateName"
+        />
+        <select #rel name="alternateRelation" (change)="relationChange($event)">
+          <option selected disabled value="Relation">Relation</option>
+          <option value="Father">Father</option>
+          <option value="Mother">Mother</option>
+          <option value="Sibling">Sibling</option>
+          <option value="Spouse">Spouse</option>
+          <option value="Guardian">Guardian</option>
+        </select>
+      </div>
+    </div>
+    <div class="three-inp">
+      <input
+          type="text"
+          onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57"
+          name="grossSalary"
+          placeholder="Gross Salary"
+          formControlName="grossSalary"
+        />
+      <div class="sb">
+        <input
+          type="text"
+          onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57"
+          name="aadharNo"
+          placeholder="Aadhar Number"
+          formControlName="aadharNo"
+        />
+        <label
+          *ngIf="
+            !form.controls['aadharNo'].valid &&
+            form.controls['aadharNo']?.touched
+          "
+          class="err-float"
+          for=""
+          >Invalid Aadhar Number!</label
+        >
+      </div>
+
+      <div class="sb">
+        <input
+          type="text"
+          (input)="onInputChange($event)"
+          name="panNo"
+          placeholder="Pan Number"
+          formControlName="panNo"
+        />
+
+        <label
+          *ngIf="
+            !form.controls['panNo'].valid && form.controls['panNo']?.touched
+          "
+          class="err-float"
+          for=""
+          >Invalid Pan Number!</label
+        >
+      </div>
+    </div>
+    <div class="two-inp">
+      <input
+        type="text"
+        name="address"
+        formControlName="address"
+        placeholder="Residentail Address"
+      />
+      <input
+        type="text"
+        name="address"
+        formControlName="currentAddress"
+        placeholder="Current Address"
+      />
+    </div>
+    <div class="three-inp">
+      <select #gen name="Gender" (change)="genderChange($event)">
+        <option selected disabled value="Gender">Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Others">Others</option>
+      </select>
+      <select #dep name="department" (change)="depChange($event)">
+        <option selected disabled value="Department">Department</option>
+        @for (item of roles; track $index) {
+        <option [value]="item">{{ item }}</option>
+        }
+      </select>
+
+      <input
+        placeholder="Designation"
+        name="Designation"
+        type="text"
+        formControlName="designation"
+      />
+    </div>
+    <div class="three-inp">
+      <div class="sb">
+        <label class="float" for="">Date of Joining</label>
+        <input type="date" formControlName="dateOfJoining" placeholder="doj" />
+      </div>
+      <input
+        type="head"
+        placeholder="Reporting Manager"
+        name="head"
+        formControlName="head"
+      />
+      @if(id){
+      <button class="button" [disabled]="form.invalid" (click)="updateEmp()">
+        Update
+      </button>
+      } @else {
+      <button class="button" [disabled]="form.invalid" (click)="submitEmp()">Submit</button>
+      }
+    </div>
+   
+  </div>
+</div>

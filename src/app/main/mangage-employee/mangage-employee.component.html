@@ -1,0 +1,92 @@
+<div class="full-box">
+  <h3 class="text-[var(--5)] font-semibold my-4">Manage Employee</h3>
+    <div class="search-box">
+      <input #search  (keyup)="searchName(search)" type="text" placeholder="Search by Name..." />
+    </div>
+    <div class="dropdown-box">
+      <select class="mr-5" name="" id="" (change)="depChange($event)">
+        <option value="">All</option>
+        @for (item of roles; track $index) {
+         
+          <option [value]="item">{{item}}</option>
+        }
+      </select>
+
+     
+        <button class="button" [routerLink]="['add']" >Add Employee</button>
+   
+    </div>
+    <div class="table-box">
+      <div class="rounded-lg border border-gray-200">
+        <div class="overflow-x-auto rounded-t-lg">
+          <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+            <thead class="ltr:text-left rtl:text-right">
+              <tr>
+                <th
+                  class="whitespace-nowrap text-left px-4 py-2 font-medium text-gray-900"
+                >
+                  Name
+                </th>
+                <th
+                  class="whitespace-nowrap text-left px-4 py-2 font-medium text-gray-900"
+                >
+                  Emp Id
+                </th>
+                <th
+                  class="whitespace-nowrap text-left px-4 py-2 font-medium text-gray-900"
+                >
+                  Department
+                </th>
+                <th
+                  class="whitespace-nowrap text-left px-4 py-2 font-medium text-gray-900"
+                >
+                  Role
+                </th>
+                <th
+                  class="whitespace-nowrap text-left px-4 py-2 font-medium text-gray-900"
+                >
+                  Head
+                </th>
+         
+              </tr>
+            </thead>
+  
+            <tbody class="divide-y divide-gray-200">
+              @for (v of allEmp; track $index) {
+                <tr>
+                  <td [routerLink]="['view']" [queryParams]="{id:v._id}" class="whitespace-nowrap cursor-pointer hover:text-[var(--5)] hover:underline hover:underline-offset-4 px-4 py-2 font-medium text-gray-900">
+                   <a [routerLink]="['view']" [queryParams]="{id:v._id}"> {{v.empName}}</a>  
+                  </td>
+                  <td class="whitespace-nowrap font-semibold px-4 py-2 text-gray-700">
+                    {{v.empId}}
+                  </td>
+                  <td class="whitespace-nowrap  px-4 py-2 text-gray-700">
+                    {{v.department}}
+                  </td>
+                  <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                  {{v.designation}}
+                  </td>
+                  <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                  {{v.head}}
+                  </td>
+                  
+               
+                </tr>
+              }
+             
+             
+           
+         
+            </tbody>
+          </table>
+        </div>
+  
+        
+      </div>
+      <div class="button-box">
+          <button class="button" [routerLink]="['add']" >Add Employee</button>
+        </div>
+    </div>
+    
+  </div>
+  

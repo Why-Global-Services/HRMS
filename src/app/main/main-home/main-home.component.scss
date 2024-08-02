@@ -1,0 +1,23 @@
+.table-box{
+    width: 600px;
+    padding: 40px;
+    background-color: white;
+}
+.dropdown-box{
+    height: 50px;
+    width: 100%;
+    margin: 10px 0;
+    display: flex;
+    select, input{
+        height: 40px;
+        margin-right: 20px;
+    width: 120px;
+    font-size: 17px;
+    border-radius: 10px;
+    padding: 0 10px;
+    color: var(--5);
+    }
+ }
+ .bs{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+ }

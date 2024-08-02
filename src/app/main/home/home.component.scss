@@ -1,0 +1,15 @@
+.layout{
+    // display: grid;
+    // grid-template-columns: 20% 80%;
+    .side{
+        background-color:var(--1);
+        position: fixed;
+        left: 0;
+        width: 300px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    }
+    .full{
+        background-color: var(--2);
+        margin-left: 300px;
+    }
+}

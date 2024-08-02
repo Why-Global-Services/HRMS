@@ -1,0 +1,115 @@
+<div class="full-box">
+  <h3 class="text-[var(--5)] font-semibold my-4">Manage Attendance</h3>
+  <div class="search-box">
+    <input #search type="text" placeholder="Search by Name..." (keyup)="searchName(search)" />
+  </div>
+  <div class="dropdown-box">
+    <select name="" id="" (change)="depChange($event)">
+      <option value="">All</option>
+      @for (item of roles; track $index) {
+        <option [value]="item">{{item}}</option>
+      }
+    </select>
+    <input forma type="date" [value]="today" (change)="dateChange(date)" #date [max]="today"  placeholder="dd-mm-yyyy">
+    <div class="flex  items-center h-[40px]">
+      <label class="text-[var(--5)] mr-3 font-semibold" for="Bulk">Group Attendance</label>
+      <select  name="" id="Bulk" (change)="changeGlobal($event)">
+        <option value="Select" selected disabled >Select</option>
+        @for (item of GattenArr; track $index) {
+            <option [value]="item">{{item}}</option>
+        }
+     
+    </select>
+    </div>
+  
+  </div>
+  <div class="table-box">
+    <div class="rounded-lg border border-gray-200">
+      <div class="overflow-x-auto rounded-t-lg">
+        <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+          <thead class="ltr:text-left rtl:text-right">
+            <tr>
+              <th
+                class="whitespace-nowrap text-left px-4 py-2 font-medium text-gray-900"
+              >
+                Select
+              </th>
+              <th
+                class="whitespace-nowrap text-left px-4 py-2 font-medium text-gray-900"
+              >
+                Name
+              </th>
+              <th
+                class="whitespace-nowrap text-left px-4 py-2 font-medium text-gray-900"
+              >
+                Emp Id
+              </th>
+              <th
+                class="whitespace-nowrap text-left px-4 py-2 font-medium text-gray-900"
+              >
+                Department
+              </th>
+             
+              <th
+                class="whitespace-nowrap text-left px-4 py-2 font-medium text-gray-900"
+              >
+                Attendance
+              </th>
+              <th
+                class="whitespace-nowrap text-left px-4 py-2 font-medium text-gray-900"
+              >
+                Status
+              </th>
+            </tr>
+          </thead>
+
+          <tbody class="divide-y divide-gray-200">
+            @for (v of allEmp; track $index) {
+            <tr>
+              <td class="whitespace-nowrap  px-4 py-2 text-gray-700">
+                <div class="checkbox-wrapper-13">
+                  <input [checked]="isChecked(v._id)" id="c1-13" [disabled]="!globalAtten || v.attendanceId" type="checkbox" [value]="v._id" (change)="checkTheBox($event)">
+                  <!-- <label for="c1-13">Checkbox</label> -->
+                </div>
+              </td>
+              <td [routerLink]="['details']" [queryParams]="{id:v._id}" class="whitespace-nowrap cursor-pointer hover:underline-offset-4 hover:underline hover:text-[var(--5)] px-4 py-2 font-medium text-gray-900">
+                <a [routerLink]="['details']" [queryParams]="{id:v._id}" > {{v.empName}}</a>
+               
+              </td>
+              <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                {{v.empId}}
+              </td>
+              <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                {{v.department}}
+              </td>
+              <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                <select   name="" id=""  (change)="oneAtten(v._id,$event)">
+                    @for (item of attenArr; track $index) {
+                        <option [selected]="v.att == item" [value]="item">{{item}}</option>
+      
+                    }
+                    <option  [selected]="v.att == 'Comp Off'" disabled value="Comp Off">Comp Off</option>
+                </select>
+              </td>
+              <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+               <button [disabled]="!v.attendanceId"  class="button">Edit</button>
+               <!-- <button [disabled]="!v.attendanceId" (click)="enableEdit(v._id)" class="button">Update</button> -->
+              </td>
+            </tr>
+          }
+           
+         
+       
+          </tbody>
+        </table>
+      </div>
+
+      
+    </div>
+    <div class="button-box">
+        <button (click)="submitAtten()"  class="button" >Submit</button>
+      </div>
+  </div>
+  
+</div>
+
